@@ -1,0 +1,78 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{colles-pck}[2015/05/31 Custom Package]
+
+
+
+%----------------------------------------------------------------------------------------
+%	CORRECTION SUBSECTION
+%----------------------------------------------------------------------------------------
+
+\usepackage[framemethod=tikz]{mdframed}
+
+%Couleur des box
+\definecolor{colorbox}{rgb}{0.57, 0.64, 0.69}
+
+%Paramètre des box
+\newmdenv[innerlinewidth=0.5pt, roundcorner=4pt,linecolor=colorbox,innerleftmargin=6pt,
+innerrightmargin=6pt,innertopmargin=6pt,innerbottommargin=6pt]{boxcorrection}
+
+%Définition d'une variable booléen par défaut FALSE
+\newif\if@correction \@correctionfalse
+
+%Changer la nature de la variable en fonction de l'option choisie
+\DeclareOption{print}{\@correctiontrue}
+\DeclareOption{no-print}{\@correctionfalse}
+ 
+%exécution des options
+\ProcessOptions
+
+\newcommand{\correction}[1]{ %Defines the problem answer command with the content as the only argument
+\if@correction
+	\newpage % Sauter 1 page
+	\begin{boxcorrection}
+	\textbf{\underline{\'El\'ements de correction}}
+	\vspace*{0.5\baselineskip} % Sauter 1/2 ligne
+	#1
+	\end{boxcorrection}%Makes the box around the problem answer and puts the content inside
+	\vspace*{\baselineskip} % Sauter 1 ligne
+\else\fi}
+
+%----------------------------------------------------------------------------------------
+%	QUESTION SUBSECTION
+%----------------------------------------------------------------------------------------
+
+\newcounter{QuesNum}[section] %Création d'un compteur qui se reset lorsque que le compteur section s'incrémente
+\setcounter{QuesNum}{1} %Valeur initiale de 1
+
+\newcommand{\question}[2]{
+\addtocounter{QuesNum}{1} %incrémentation d'un pas de 1 à chaque exercicexercice
+\subsubsection{\underline{Question \theQuesNum :} #1}
+\if@correction
+	\begin{boxcorrection}
+	\textbf{\underline{\'El\'ements de correction}}
+	\vspace*{0.5\baselineskip} % Sauter 1/2 ligne
+	#2
+	\end{boxcorrection}%Makes the box around the problem answer and puts the content inside
+	\vspace*{\baselineskip} % Sauter 1 ligne
+\else\fi}
+
+
+%----------------------------------------------------------------------------------------
+%	EXERCICE & PROBLEME SUBSECTION
+%----------------------------------------------------------------------------------------
+
+\newcounter{ExoNum}[section] %Création d'un compteur qui se reset lorsque que le compteur section s'incrémente
+\setcounter{ExoNum}{1} %Valeur initiale de 1
+
+\newcounter{ProbNum}[section]
+\setcounter{ProbNum}{1}
+
+\newcommand{\exercice}[1]{
+	\addtocounter{ExoNum}{1} %incrémentation d'un pas de 1 à chaque exercicexercice
+	\subsection{Exercice \theExoNum~-- #1}
+	}
+
+\newcommand{\probleme}[1]{
+	\addtocounter{ProbNum}{1} %incrémentation d'un pas de 1 à chaque exercicexercice
+	\subsection{Probl\`eme \theProbNum~-- #1}
+	}
