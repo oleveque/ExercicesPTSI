@@ -66,7 +66,7 @@ les deux pièces.
 \exercice{Embrayage conique des synchroniseurs de boîte de vitesses}
 
 On modélise le pignon fou et l'anneau de synchronisation par deux cônes en contact grâce à une action axiale $\overrightarrow{F_a}$.\\
-Le rayon intérieur des deux cônes vaut : $R_{min}$. Le rayon extérieur des deux cônes vaut : $R_{max}$. Le demi-angle au sommet des deux cônes vaut : $\alpha$. On donne $\mu$ le coefficient d’adhérence entre
+Le rayon intérieur des deux cônes vaut : $R_{min}$. Le rayon extérieur des deux cônes vaut : $R_{max}$. Le demi-angle au sommet des deux cônes vaut : $\alpha$. On donne $\mu$ le coefficient d'adhérence entre
 les deux pièces.
 
 \begin{center}
@@ -79,9 +79,26 @@ les deux pièces.
 \item Exprimer $\overrightarrow{dF_{2\rightarrow1}(Q)}$.
 \item Déterminer le couple maximal transmissible en fonction de $p$ (la pression exercée sur les disques creux) et des caractéristiques géométriques de l’embrayage.
 \item Déterminer l’action axiale $\overrightarrow{F_a}$ (qui crée les $\overrightarrow{dN}$ ) en fonction de $p$ et des caractéristiques géométriques de l’embrayage.
-\item En déduire le couple maximal transmissible en fonction de $\overrightarrow{F_a}$ (et non en fonction de $p$) et des caractéristiques géométriques de l’embrayage.
+\item En déduire le couple maximal transmissible en fonction de $F_a$ (et non en fonction de $p$) et des caractéristiques géométriques de l'embrayage.
 \end{enumerate}
 
+\correction{
+\begin{enumerate}
+\item Schéma corrigé
+\begin{center}
+\includegraphics[scale=0.5]{png/embrayage2_correction.png}
+\end{center}
+
+\item $\boxed{\overrightarrow{dF_{2\rightarrow1}(Q)}=\overrightarrow{dN}+\overrightarrow{dT}}$ avec $\overrightarrow{dT}=\mu\overrightarrow{dN}$
+
+\item $dC = rdT = r\mu dN$ avec $dN = pdS$ et $dS = rd\theta dl = \frac{rd\theta dr}{\sin\alpha}$\\
+d'où après intégration $\boxed{C=\frac{2\pi \mu p}{3\sin\alpha}\left( R_{max}^3-R_{min}^3\right)}$
+
+\item Comme $dF_a = dN \sin\alpha$ on en déduit $\boxed{F_a=p\pi\left( R_{max}^2-R_{min}^2\right)}$
+
+\item Ainsi $\boxed{C=\frac{2\mu F_a}{3\sin\alpha}\frac{R_{max}^3-R_{min}^3}{R_{max}^2-R_{min}^2}}$
+\end{enumerate}
+}
 \newpage
 
 %--------------------------------------------
