@@ -2,55 +2,48 @@
 % Cahier d'exercices de Colles pour PTSI
 %
 % olivier.leveque@ens-paris-saclay.fr 
-%	http://perso.crans.org/oleveque
-%
+%	http://perso.crans.org/oleveque/docs/cpge
 
-%%%%%%%%%%%%%%%%%%% EN-TÊTE
+
 %----------------------------------------------------------------------------------------
 %	PACKAGES & CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-
 \documentclass{report}
-
-\usepackage{fancyhdr} %Custom headers
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[print]{colles-pck} %Styles exos/corrections
+	%Options : print = affiche la correction; no-print = n'affiche pas la correction
+\usepackage{fancyhdr}
 \usepackage[Rejne]{fncychap} %Custom chapters
 	%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
 
-\usepackage{lastpage} %Permet de déterminer quelle est la  dernière pasge du footer
-
-\usepackage[print]{setting/colles-pck} %Styles exos/corrections
-	%Options : print = affiche la correction; no-print = n'affiche pas la correction
-
-\usepackage{amssymb} %Symboles spéciaux
-\usepackage{extramarks} %Requis pour les headers and footers
-\usepackage{graphicx} %Requis pour insérer des images
-\usepackage{amsmath} %Texte dans les expressions mathématiques
+\usepackage{lastpage}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
 \usepackage{calligra}
-\usepackage{pdfpages} %Permet d'importer des documents PDF
+\usepackage{pdfpages}
 \usepackage[labelsep=quad,indention=10pt]{subfig}
-\captionsetup*[subfigure]{position=bottom}
-
-\usepackage[utf8]{inputenc}
-\usepackage[francais]{babel} %Langue Française
+	\captionsetup*[subfigure]{position=bottom}
 \usepackage[pdftex]{hyperref}
 
-%Configurations du PDF
+%METADONNEES
 \hypersetup{
-    bookmarks=true,         % show bookmarks bar?
-    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-    pdftoolbar=true,        % show Acrobat’s toolbar?
-    pdfmenubar=true,        % show Acrobat’s menu?
-    pdffitwindow=true,      % page fit to window when opened
-    pdftitle={Khôlles de Sciences Industrielles},    % title
-    pdfauthor={Olivier Lévêque},     % author
-    pdfsubject={Exercices oraux de Sciences Industrielles pour PTSI},   % subject of the document
-    pdfnewwindow=true,      % links in new window
-    pdfkeywords={khôlles} {colles} {exercices} {oral} {corrections} {PTSI} {Sciences Industrielles} {Classes Préparatoires} {CPGE} {Ginette} {Lycée Sainte-Geneviève} {Versailles} {SI} {SII} {Banque PT}, % list of keywords
-    colorlinks=false,       % false: boxed links; true: colored links
-    linkcolor=red,          % color of internal links
-    citecolor=green,        % color of links to bibliography
-    filecolor=magenta,      % color of file links
-    urlcolor=cyan           % color of external links
+    bookmarks=true,
+    unicode=false,
+    pdftoolbar=true,
+    pdfmenubar=true,
+    pdffitwindow=true,
+    pdftitle={Khôlles de Sciences Industrielles},
+    pdfauthor={Olivier Lévêque},
+    pdfsubject={Exercices oraux de Sciences Industrielles pour PTSI},
+    pdfnewwindow=true, 
+    pdfkeywords={khôlles} {colles} {exercices} {oral} {corrections} {PTSI} {Sciences Industrielles} {Classes Préparatoires} {CPGE} {Ginette} {Lycée Sainte-Geneviève} {Versailles} {SI} {SII} {Banque PT},
+    colorlinks=false,
+    linkcolor=red,
+    citecolor=green,
+    filecolor=magenta,
+    urlcolor=cyan
 }
 
 %Mise en page (marges)
@@ -60,61 +53,44 @@
 \textwidth=6.5in
 \textheight=9.0in
 \headsep=0.25in 
-
 \linespread{1.1} %Espace entre les lignes
+\setcounter{secnumdepth}{1} %Supprimer la numérotation par défaut des subsections
+\setlength\parindent{0pt} %Supprime toutes indentations venant des paragraphes
 
 %----------------------------------------------------------------------------------------
-%	DOCUMENT STRUCTURE COMMANDS
+%	NOUVELLES COMMANDES
 %----------------------------------------------------------------------------------------
-
-\newcommand*{\plogo}{\fbox{$\mathcal{BJ}$}} %Logo générique
-
-\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}} %Hyperlien pour les adresses emails
-
+\newcommand{\email}[1]{\href{mailto:#1}{\nolinkurl{#1}}}
 \newcommand{\blankpage}{
 	\newpage
 	\null % Insérer une page vierge
 	\thispagestyle{empty} % Supprimer le header & le footer sur cette page
-	\newpage}
-
-\setcounter{secnumdepth}{1} %Supprimer la numérotation par défaut des subsections
+	\newpage
+}
+\newcommand{\questions}{\subsubsection{Travail demandé}}
 
 %----------------------------------------------------------------------------------------
 %	CONFIGURATIONS HEADER & FOOTER
-%----------------------------------------------------------------------------------------
-
-\newcommand{\hdTitle}{Classes préparatoires en Physique, Technologie et Sciences de l'Ingénieur du Lycée Sainte-Geneviève} %Titre du header
-
-%Set up du header et du footer
+%---------------------------------------------------------------------------------------
 \pagestyle{fancy}
 \lhead{} %Top left header
-\chead{\hdTitle} % Top center header
+\chead{Classes préparatoires en Physique, Technologie et Sciences de l'Ingénieur du Lycée Sainte-Geneviève} % Top center header
 \rhead{} %Top right header
-\lfoot{\hyperref[sommaire]{$\diamondsuit$}} %Bottom left footer
+\lfoot{\hyperref[sommaire]{$\hookrightarrow$}} %Bottom left footer
 \cfoot{} %Bottom center footer
 \rfoot{Page\ \thepage\ de\ \pageref{LastPage}} %Bottom right footer
 \renewcommand\headrulewidth{0.4pt} %Size of the header rule
 \renewcommand\footrulewidth{0.4pt} %Size of the footer rule
 
-\setlength\parindent{0pt} %Supprime toutes indentations venant des paragraphes
-
-
-%----------------------------------------------------------------------------------------
-%	CONFIGURATION PAGE TITLE
-%----------------------------------------------------------------------------------------
-\newcommand*{\couverture}{
-\include{setting/setting_couverture}
-}
 
 %%%%%%%%%%%%%%%%%%% DOCUMENT
 \begin{document}
+
 %----------------------------------------------------------------------------------------
 %	COUVERTURE
 %----------------------------------------------------------------------------------------
-
-\thispagestyle{empty} %Supprimer le header & le footer sur cette page
-\couverture
-
+\thispagestyle{empty}
+\include{content/couverture}
 \newpage
 
 %----------------------------------------------------------------------------------------
@@ -122,7 +98,6 @@
 %----------------------------------------------------------------------------------------
 \include{content/apropos+sommaire} % Introduction
 \setcounter{page}{1}
-
 \include{content/chapitre1} % Systèmes linéaires, continus et invariants
 \include{content/chapitre2} % Cinématique et Modélisation du solide indéformable
 \include{content/chapitre3} % Spécifications géométriques & Chaines de côte
@@ -136,6 +111,7 @@
 %	RÉFÉRENCES
 %----------------------------------------------------------------------------------------
 \blankpage
-\addcontentsline{toc}{chapter}{Bibliographie} % Classer la bibliographie comme un chapter
+\addcontentsline{toc}{chapter}{Bibliographie}
 \include{content/bibliographie}
+
 \end{document}
